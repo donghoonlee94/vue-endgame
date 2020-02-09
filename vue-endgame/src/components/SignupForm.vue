@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="submitForm">
     <div>
-      <label for="username">아이디: </label>
+      <label for="username">이메일: </label>
       <input id="username" type="text" v-model="username" />
     </div>
     <div>
