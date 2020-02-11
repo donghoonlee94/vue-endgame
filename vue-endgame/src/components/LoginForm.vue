@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
+
 export default {
   data() {
     return {
@@ -53,10 +53,8 @@ export default {
           username: this.username,
           password: this.password,
         };
-        const { data } = await loginUser(userData);
-        console.log(data.token);
-        this.$store.commit('setToken', data.token);
-        this.$store.commit('setUsername', data.user.username);
+        // await을 걸어주지 않으면 순서가 보장되지 않아 push를 실행하고, 오류를 발생시킬 수 있다.
+        await this.$store.dispatch('LOGIN', userData);
         this.$router.push('/main');
       } catch (error) {
         console.log(error.response.data);
