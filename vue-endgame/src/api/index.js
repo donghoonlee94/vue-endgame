@@ -13,30 +13,27 @@ import { setInterceptors } from './common/interceptors';
 
 // 엑시오스 초기화 함수
 function createInstance() {
-  const instance = axios.create({
+  return axios.create({
     baseURL: process.env.VUE_APP_API_URL,
+  });
+}
+
+// Restful API 의 규칙, post가 계속 반복되고 있기 때문에 post만 다루는 함수를 구현.
+
+function createInstanceWithAuth(url) {
+  const instance = axios.create({
+    baseURL: `${process.env.VUE_APP_API_URL}${url}`,
     // headers: {
     //   Authorization: store.state.token
     // }
   });
   return setInterceptors(instance);
 }
-const instance = createInstance();
 
-// 회원가입 API
-function registerUser(userData) {
-  // const url = 'http://localhost:3000/signup';  axios.create로 공통화.
-  return instance.post('signup', userData);
-}
+export const instance = createInstance();
+export const posts = createInstanceWithAuth('posts');
 
-// 로그인 API
-function loginUser(userData) {
-  return instance.post('login', userData);
-}
-
-// 학습노트 조회 API
-function fetchPosts() {
-  return instance.get('posts');
-}
-
-export { registerUser, loginUser, fetchPosts };
+// CREATE - posts
+// POST - posts
+// PUT - posts {id}
+// DELETE - posts {id}

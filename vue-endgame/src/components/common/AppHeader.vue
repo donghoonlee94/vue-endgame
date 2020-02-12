@@ -2,15 +2,17 @@
   <header>
     <div>
       <router-link to="/" class="logo">
-        TIL
-        <span v-if="isUserLogin">by {{ $store.state.username }}</span>
+        NOTEPAD
+        <span v-if="isUserLogin"
+          >로그인 이메일 {{ $store.state.username }}</span
+        >
       </router-link>
     </div>
     <div class="navigations">
       <!-- 1 -->
       <template v-if="isUserLogin">
         <a href="javascript:;" @click="logoutUser" class="logout-button">
-          Logout
+          로그아웃
         </a>
       </template>
       <!-- 2 -->
@@ -63,6 +65,7 @@ a.logo {
 .logo > span {
   font-size: 14px;
   font-weight: normal;
+  margin-left: 10px;
 }
 .navigations a {
   margin-left: 10px;
