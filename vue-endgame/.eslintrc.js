@@ -1,7 +1,8 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    jest: true, // jest 빨간줄 없애기.
   },
   extends: ["plugin:vue/essential", "@vue/prettier"],
   rules: {
