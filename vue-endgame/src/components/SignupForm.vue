@@ -8,7 +8,7 @@
         </div>
         <div>
           <label for="password">비밀번호: </label>
-          <input id="password" type="text" v-model="password" />
+          <input id="password" type="password" v-model="password" />
         </div>
         <div>
           <label for="nickname">닉네임: </label>
